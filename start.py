@@ -8,8 +8,8 @@ import argparse
 #------------------------------------------------------------------------------
 # Global Variables
 #------------------------------------------------------------------------------
-imageScan = sys.argv[1]
-cascadePath = sys.argv[2]
+imageScan = sys.argv[1] #'C:/Users/Adams/Desktop/faces.jpg'
+cascadePath = sys.argv[2]#'C:/Users/Adams/Desktop/ee.xml'
 
 #------------------------------------------------------------------------------
 # Functions
@@ -23,7 +23,7 @@ def Faces():
   cv2.imshow("Original" ,image)
   cv2.imshow("Grey" ,grey)
   
-  facesFound = faceFinder.detectMultiScale(grey,scaleFactor = 1.2,minNeighbours=10,minSize=(30,30),flags=cv2.cv.CV_HAAR_SCALE_IMAGE)
+  facesFound = faceFinder.detectMultiScale(grey,scaleFactor = 1.2,minNeighbours=10,minSize=(30,30))
   
   print("Found {} faces!".format(len(facesFound)))
 #------------------------------------------------------------------------------
