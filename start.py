@@ -2,7 +2,7 @@
 
 import cv2 
 import numpy as np
-import argparse
+import sys
 
 
 #------------------------------------------------------------------------------
@@ -23,9 +23,14 @@ def Faces():
   cv2.imshow("Original" ,image)
   cv2.imshow("Grey" ,grey)
   
-  facesFound = faceFinder.detectMultiScale(grey,scaleFactor = 1.2,minNeighbours=10,minSize=(30,30))
-  
+  facesFound = faceFinder.detectMultiScale(grey,1.3,5)  
   print("Found {} faces!".format(len(facesFound)))
+
+  for (x,y,w,h)in facesFound:
+	cv2.rectangle(image, (x,y),(x+w, y+h), (0,255,0), 2)
+  cv2.imshow("Faces found",image)
+  cv2.waitKey(0)
 #------------------------------------------------------------------------------
 # Main
 #------------------------------------------------------------------------------
+Faces()
