@@ -4,11 +4,12 @@ Run from command line with arguments to interface with the different functions t
 
 ## Done
 * Haar Casade face detection algorithm
+* Improved argument interface
+* Cut faces out of image
 
 
 ## To Do
 * Eye detection once face has been found
-* Cut and save faces out of image
-* Improved argument interface
+* Save faces out of image, where to argument? 
 * Video rate? 
 
