@@ -1,20 +1,24 @@
 #!/usr/bin/env python
 
-import cv2 
-import numpy as np
+#import cv2 
+#import numpy as np
 import sys
+import argparse
 
 
 #------------------------------------------------------------------------------
 # Global Variables
 #------------------------------------------------------------------------------
-imageScan = sys.argv[1] #'C:/Users/Adams/Desktop/faces.jpg'
-cascadePath = sys.argv[2]#'C:/Users/Adams/Desktop/ee.xml'
+#imageScan = sys.argv[1] #'C:/Users/Adams/Desktop/faces.jpg'
+#cascadePath = sys.argv[2]#'C:/Users/Adams/Desktop/ee.xml'
 
 #------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------
-def Faces():
+def faces(imageScan, cascadePath):
+
+  print(imageScan)
+  print(cascadePath)
   image = cv2.imread(imageScan)
   grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
   
@@ -27,10 +31,19 @@ def Faces():
   print("Found {} faces!".format(len(facesFound)))
 
   for (x,y,w,h)in facesFound:
-	cv2.rectangle(image, (x,y),(x+w, y+h), (0,255,0), 2)
+    cv2.rectangle(image, (x,y),(x+w, y+h), (0,255,0), 2)
+    
   cv2.imshow("Faces found",image)
   cv2.waitKey(0)
 #------------------------------------------------------------------------------
 # Main
 #------------------------------------------------------------------------------
-Faces()
+parser = argparse.ArgumentParser()
+
+parser.add_argument("image", help="file path to image for processing")
+parser.add_argument("xml_path", help="path to XML")
+
+args = parser.parse_args()
+
+
+faces(args.image, args.xml_path)
