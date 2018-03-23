@@ -10,11 +10,11 @@ Run from command line with arguments to interface with the different functions t
 
 
 ## To Do
-* Eye detection once face has been found
-* Save faces out of image, whereto argument? 
-* Red eye removal?
-* Other facial features detected
-* Train NN to identify faces
-* Better webcam speed
-* Pedestrian counter and face extraction 
+1. Eye detection once face has been found
+2. Save faces out of image, whereto argument? 
+3. Red eye removal?
+4. Other facial features detected
+5. Train NN to identify faces
+6. Better webcam speed
+7. Pedestrian counter and face extraction 
 
