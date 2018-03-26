@@ -74,7 +74,7 @@ parser.add_argument("image", help="file path to image for processing")
 parser.add_argument("xml_path", help="path to XML")
 parser.add_argument("-c","--cut", help="cut faces from image",
  action="store_true")
-parse.add_argument("-C","--Camera", type=int, help="Camera that will capture video, default 0")
+parser.add_argument("-C","--Camera", type=int, help="Camera that will capture video, default 0")
 
 args = parser.parse_args()
 
