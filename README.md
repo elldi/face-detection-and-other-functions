@@ -14,4 +14,3 @@ Run from command line with arguments to interface with the different functions t
 ### Web cam face and eye detection:
 ![Alt text](/img/real_time.jpg?raw=true "Real Time Face Detection")
 
-
