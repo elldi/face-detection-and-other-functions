@@ -8,6 +8,9 @@ Run from command line with arguments to interface with the different functions t
 
 ## Examples
 
+### Static face image eye detection:
+![Alt text](/img/niles_eyes.jpg?raw=true "Static eye detection")
+
 ### Web cam face and eye detection:
 ![Alt text](/img/real_time.jpg?raw=true "Real Time Face Detection")
 
