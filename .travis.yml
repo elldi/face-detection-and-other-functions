@@ -8,5 +8,5 @@ notifications:
 
 
 install:
-    # install python requirements
-    - pip install opencv-python
+  # install python requirements
+  - pip install opencv-python
