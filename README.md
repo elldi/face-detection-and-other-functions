@@ -8,6 +8,6 @@ Run from command line with arguments to interface with the different functions t
 
 ## Examples
 
-![alt text](http://github.com/elldi/face_detection/blob/develop/img/real_time.jpg)
+![Alt text](/blob/develop/img/real_time.jpg?raw=true "Real Time Face Detection")
 
 
