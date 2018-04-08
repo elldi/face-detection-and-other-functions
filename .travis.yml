@@ -4,9 +4,7 @@ python:
 
 notifications:
   email: false
-  
 
-
-install:
+script:
   # install python requirements
   - pip install opencv-python
