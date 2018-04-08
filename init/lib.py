@@ -18,8 +18,17 @@ def faces(image, cascadePath):
 
   return image
 
-def eyes():
-	print("testing")
+def eyes(image, cascadePath):
+
+	grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+	eyeFinder = cv2.CascadeClassifier(cascadePath)
+	eyes = eyeFinder.detectMultiScale(grey)
+
+	for (ex,ey,ew,eh) in eyes:
+		cv2.rectangle(image, (ex,ey),(ex+ew, ey+eh), (255,0,0), 2)
+
+	return image
 
 
 
