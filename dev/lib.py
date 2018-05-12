@@ -66,3 +66,38 @@ def video(facePath, eyePath):
         		break
 	video.release()
 	cv2.destroyAllWindows()
+
+def videoSingleFeature(eye):
+	video = cv2.VideoCapture(0)
+
+	eyeCascade = cv2.CascadeClassifier(eye)
+
+	while(video.isOpened()):
+		returnValue, frame = video.read()
+		greyFace = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+	
+		eyeFound = eyeCascade.detectMultiScale(greyFace,1.3,5)
+
+		for (x,y,w,h) in eyeFound:
+			cv2.rectangle(frame, (x,y),(x+w, y+h), (0,255,0), 2)
+
+		cv2.imshow("Eye Find", frame)
+		key = cv2.waitKey(20)
+		if key == 27: # exit on ESC
+			break
+
+	video.release()
+	cv2.destroyAllWindows()
+
+
+
+
+
+
+
+
+
+
+
+
+
