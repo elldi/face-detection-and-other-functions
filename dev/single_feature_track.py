@@ -8,9 +8,9 @@ import lib
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("eye_path", help="path to eyes XML")
+parser.add_argument("single_path", help="path to a haar feature XML")
 
 
 args = parser.parse_args()
 
-lib.videoSingleFeature(args.eye_path)
+lib.videoSingleFeature(args.single_path)
