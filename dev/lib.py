@@ -63,7 +63,7 @@ def video(facePath, eyePath):
 		cv2.imshow("Face Find", frame)
 		key = cv2.waitKey(20)
 		if key == 27: # exit on ESC
-        	break
+			break
 	video.release()
 	cv2.destroyAllWindows()
 
