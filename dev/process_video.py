@@ -8,12 +8,19 @@ import lib
 import os
 
 
-def draw_detections(img, rects, thickness = 1):
+def draw_detections(img, rects, color):
     for x, y, w, h in rects:
         # the HOG detector returns slightly larger rectangles than the real objects.
         # so we slightly shrink the rectangles to get a nicer output.
         pad_w, pad_h = int(0.15*w), int(0.05*h)
-        cv2.rectangle(img, (x+pad_w, y+pad_h), (x+w-pad_w, y+h-pad_h), (0, 255, 0), 2)
+        cv2.rectangle(img, (x+pad_w, y+pad_h), (x+w-pad_w, y+h-pad_h), color, 2)
+    return img 
+def draw_face(img, rects, color):
+    for x, y, w, h in rects:
+        # the HOG detector returns slightly larger rectangles than the real objects.
+        # so we slightly shrink the rectangles to get a nicer output.
+        pad_w, pad_h = int(w*1.15), int(h*1.05)
+        cv2.rectangle(img, (x+pad_w, y+pad_h), (x+w-pad_w, y+h-pad_h), color, 2)
     return img 
 
 parser = argparse.ArgumentParser()
@@ -30,7 +37,7 @@ faceCascade = cv2.CascadeClassifier(args.face_path)
 colorCutFace = 0
 
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter('output.mp4',fourcc, 20.0, (1920,1080))
+out = cv2.VideoWriter('output.mp4',fourcc, 20, (800,450), True)
 
 total = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
 
@@ -52,17 +59,12 @@ while(video.isOpened()):
 
 	found,w=hog.detectMultiScale(frame, winStride=(8,8), padding=(32,32), scale=1.05)
 
-	img = draw_detections(frame,found)
+	img = draw_detections(frame,found, (0,255,0))
 
-	for (x,y,w,h) in facesFound:
-		width = w * 1.4
-		height = h * 1.4
-		x = x - 20
-		y = y - 20
-		cv2.rectangle(img, (x,y),(x + int(width), y + int(height)), (0,0,255), 2)
-		
+	img = draw_face(img,facesFound, (0,0,255))
 
-	out.write(img)
+	resized_image = cv2.resize(img, (800, 450)) 
+	out.write(resized_image)
 	counter += 1
 
 	sys.stdout.write("Processing frames: %d / %d    \r" % (counter, total))
