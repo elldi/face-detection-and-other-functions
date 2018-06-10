@@ -89,8 +89,42 @@ def videoSingleFeature(eye):
 	video.release()
 	cv2.destroyAllWindows()
 
+def videoStream(videoPath, facePath):
 
 
+	video = cv2.VideoCapture(videoPath)
+	faceCascade = cv2.CascadeClassifier(facePath)
+
+	colorCutFace = 0
+
+	while(video.isOpened()):
+
+		returnValue, frame = video.read()
+
+		'''
+		greyFace = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+		
+		facesFound = faceCascade.detectMultiScale(greyFace,1.3,5)
+ 
+
+  		for (x,y,w,h) in facesFound:
+  			cv2.rectangle(frame, (x,y),(x+w, y+h), (0,255,0), 2)
+
+			cutFace = greyFace[y:y+h, x:x+w]
+			colorCutFace = frame[y:y+h, x:x+w]
+			eyes = eyeCascade.detectMultiScale(cutFace)
+
+			for (ex,ey,ew,eh) in eyes:
+				cv2.rectangle(colorCutFace, (ex,ey),(ex+ew, ey+eh), (255,0,0), 2)
+
+		'''
+		cv2.imshow("Face Find", frame)
+		key = cv2.waitKey(20)
+		if key == 27: # exit on ESC
+			break
+
+	video.release()
+	cv2.destroyAllWindows()
 
 
 
